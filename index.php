@@ -5,17 +5,22 @@ class Movie
     public $genere;
     public $anno;
     public $lingua;
-    public $valutazione;
 
-    public function __construct($dato1, $dato2, $dato3, $dato4, $dato5)
+    public function __construct($dato1, $dato2, $dato3, $dato4)
     {
         $this->titolo = $dato1;
         $this->genere = $dato2;
         $this->anno = $dato3;
         $this->lingua = $dato4;
-        $this->valutazione = $dato5;
     }
 }
+
+$film1 = new Movie("Avengers", "azione", 2012, "inglese");
+$film2 = new Movie("Avengers Age of Ultron", "azione", 2015, "inglese");
+$film3 = new Movie("Avengers Infinity War", "azione", 2018, "inglese");
+$film4 = new Movie("Avengers End Game", "azione", 2019, "inglese");
+
+
 ?>
 
 <!DOCTYPE html>
