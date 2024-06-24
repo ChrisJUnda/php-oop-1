@@ -20,6 +20,8 @@ $film2 = new Movie("Avengers Age of Ultron", "azione", 2015, "inglese");
 $film3 = new Movie("Avengers Infinity War", "azione", 2018, "inglese");
 $film4 = new Movie("Avengers End Game", "azione", 2019, "inglese");
 
+$films = [$film1, $film2, $film3, $film4];
+
 
 ?>
 
@@ -33,6 +35,20 @@ $film4 = new Movie("Avengers End Game", "azione", 2019, "inglese");
 </head>
 
 <body>
+    <ul>
+        <li>
+            <?= "$film1->titolo" ?>
+        </li>
+        <li>
+            <?= "$film2->titolo" ?>
+        </li>
+        <li>
+            <?= "$film3->titolo" ?>
+        </li>
+        <li>
+            <?= "$film4->titolo" ?>
+        </li>
+    </ul>
 
 </body>
 
