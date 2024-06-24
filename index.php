@@ -13,6 +13,10 @@ class Movie
         $this->anno = $dato3;
         $this->lingua = $dato4;
     }
+    public function getFilm()
+    {
+        return "<p>" . "$this->titolo" . "</p>" . "<p>" . "$this->genere" . "</p>" . "<p>" . "$this->anno" . "</p>" . "<p>" . "$this->lingua" . "</p>";
+    }
 }
 
 $film1 = new Movie("Avengers", "azione", 2012, "inglese");
@@ -32,23 +36,23 @@ $films = [$film1, $film2, $film3, $film4];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP-OOP-1</title>
+    <!-- Link Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- /Link Bootstrap -->
 </head>
 
 <body>
-    <ul>
-        <li>
-            <?= "$film1->titolo" ?>
-        </li>
-        <li>
-            <?= "$film2->titolo" ?>
-        </li>
-        <li>
-            <?= "$film3->titolo" ?>
-        </li>
-        <li>
-            <?= "$film4->titolo" ?>
-        </li>
-    </ul>
+    <div class="container ">
+        <div class="row">
+            <div class="col-12 border">
+                <?php foreach ($films as $film) { ?>
+                    <?php echo $film->getFilm() ?>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+
+
 
 </body>
 
