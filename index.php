@@ -1,4 +1,26 @@
 <?php
+//classi attori
+class Attori
+{
+
+    private string $name;
+    private string $lastname;
+
+    //FUNZIONE COSTRUCT ATTORI
+    public function __construct(string $name, string $lastname)
+    {
+        $this->name = $name;
+        $this->lastname = $lastname;
+    }
+
+    // METODO GET
+    public function getFullName(): string
+    {
+        return "{$this->name} {$this->lastname}";
+    }
+}
+
+//Classi Movie
 class Movie
 {
     // public $titolo;
@@ -10,14 +32,16 @@ class Movie
     private array $generes;
     private int $anno;
     private string $lingua;
+    private array $attori;
 
-    //FUNZIONE COSTRUCT
-    public function __construct(string $titolo, array $generes, int $anno, string $lingua)
+    //FUNZIONE COSTRUCT MOVIE
+    public function __construct(string $titolo, array $generes, int $anno, string $lingua, array $attori = [])
     {
         $this->titolo = $titolo;
         $this->setGeneres($generes);
         $this->anno = $anno;
         $this->lingua = $lingua;
+        $this->attori = $attori;
     }
 
     // GENERI CON ECCEZIONI
