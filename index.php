@@ -1,12 +1,17 @@
 <?php
 class Movie
 {
-    public $titolo;
-    public $genere;
-    public $anno;
-    public $lingua;
+    // public $titolo;
+    // public $genere;
+    // public $anno;
+    // public $lingua;
 
-    public function __construct($dato1, $dato2, $dato3, $dato4)
+    private string $titolo;
+    private string $genere;
+    private int $anno;
+    private string $lingua;
+
+    public function __construct(string $dato1, string $dato2, int $dato3, string $dato4)
     {
         $this->titolo = $dato1;
         $this->genere = $dato2;
