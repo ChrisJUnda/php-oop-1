@@ -7,32 +7,49 @@ class Movie
     // public $lingua;
 
     private string $titolo;
-    private string $genere;
+    private array $generes;
     private int $anno;
     private string $lingua;
 
     //FUNZIONE COSTRUCT
-    public function __construct(string $titolo, string $genere, int $anno, string $lingua)
+    public function __construct(string $titolo, array $generes, int $anno, string $lingua)
     {
         $this->titolo = $titolo;
-        $this->genere = $genere;
+        $this->setGeneres($generes);
         $this->anno = $anno;
         $this->lingua = $lingua;
     }
 
+    // GENERI CON ECCEZIONI
+    public function setGeneres(array $generes)
+    {
+        if (empty($generes)) {
+            throw new InvalidArgumentException("Il genere deve essere una lista non vuota.");
+        }
+        foreach ($generes as $genere) {
+            if (!is_string($genere) || empty($genere)) {
+                throw new InvalidArgumentException("Ogni genere deve essere una stringa non vuota.");
+            }
+        }
+        $this->generes = $generes;
+    }
+
+
+
     //METODO GET
     public function getFilm()
     {
-        return "Titolo: {$this->titolo}, Genere: {$this->genere}, Anno di uscita: {$this->anno}, Lingua originale: {$this->lingua}";
+        $generes = implode(", ", $this->generes);
+        return "Titolo: {$this->titolo}, Genere: {$generes}, Anno di uscita: {$this->anno}, Lingua originale: {$this->lingua}";
     }
 }
 
 try {
     $movies = [
-        new Movie("Avengers", "azione", 2012, "inglese"),
-        new Movie("Avengers Age of Ultron", "azione", 2015, "inglese"),
-        new Movie("Avengers Infinity War", "azione", 2018, "inglese"),
-        new Movie("Avengers End Game", "azione", 2019, "inglese"),
+        new Movie("Avengers", ["Azione", "Fanstascienza"], 2012, "inglese"),
+        new Movie("Avengers Age of Ultron", ["Azione", "Fanstascienza"], 2015, "inglese"),
+        new Movie("Avengers Infinity War", ["Azione", "Fanstascienza"], 2018, "inglese"),
+        new Movie("Avengers End Game", ["Azione", "Fanstascienza"], 2019, "inglese"),
 
     ];
 } catch (Exception $e) {
