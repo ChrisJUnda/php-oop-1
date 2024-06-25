@@ -32,16 +32,16 @@ class Movie
     private array $generes;
     private int $anno;
     private string $lingua;
-    private array $attori;
+    private array $attoris;
 
     //FUNZIONE COSTRUCT MOVIE
-    public function __construct(string $titolo, array $generes, int $anno, string $lingua, array $attori = [])
+    public function __construct(string $titolo, array $generes, int $anno, string $lingua, array $attoris = [])
     {
         $this->titolo = $titolo;
         $this->setGeneres($generes);
         $this->anno = $anno;
         $this->lingua = $lingua;
-        $this->attori = $attori;
+        $this->attoris = $attoris;
     }
 
     // GENERI CON ECCEZIONI
@@ -57,23 +57,43 @@ class Movie
         }
         $this->generes = $generes;
     }
+    //function attori
+    public function setAttoris(array $attoris)
+    {
+        $this->attoris = $attoris;
+    }
 
 
 
     //METODO GET
     public function getFilm()
     {
-        $generes = implode(", ", $this->generes);
-        return "Titolo: {$this->titolo}, Genere: {$generes}, Anno di uscita: {$this->anno}, Lingua originale: {$this->lingua}";
+        // $generes = implode(", ", $this->generes);
+        // return "Titolo: {$this->titolo}, Genere: {$generes}, Anno di uscita: {$this->anno}, Lingua originale: {$this->lingua}";
+        $generesString = '';
+        foreach ($this->generes as $genere) {
+            $generesString .= $genere . ', ';
+        }
+
+        $attorisString = '';
+        foreach ($this->attoris as $attori) {
+            $attorisString .= $attori->getFullName() . ', ';
+        }
+        return "Titolo: {$this->title}, Generi: {$generesString}, Anno: {$this->anno}, Attori: {$attorisString}";
     }
 }
 
+$attori1 = new Attori("Robert", "Downey");
+$attori2 = new Attori("Chris", "Evans");
+$attori3 = new Attori("Chris ", "Hemsworth");
+$attori4 = new Attori("Scarlett", "Johansson");
+
 try {
     $movies = [
-        new Movie("Avengers", ["Azione", "Fanstascienza"], 2012, "inglese"),
-        new Movie("Avengers Age of Ultron", ["Azione", "Fanstascienza"], 2015, "inglese"),
-        new Movie("Avengers Infinity War", ["Azione", "Fanstascienza"], 2018, "inglese"),
-        new Movie("Avengers End Game", ["Azione", "Fanstascienza"], 2019, "inglese"),
+        new Movie("Avengers", ["Azione", "Fanstascienza"], 2012, "inglese", [$attori1, $attori2, $attori3, $attori4]),
+        new Movie("Avengers Age of Ultron", ["Azione", "Fanstascienza"], 2015, "inglese", [$attori1, $attori2, $attori3, $attori4]),
+        new Movie("Avengers Infinity War", ["Azione", "Fanstascienza"], 2018, "inglese", [$attori1, $attori2, $attori3, $attori4]),
+        new Movie("Avengers End Game", ["Azione", "Fanstascienza"], 2019, "inglese", [$attori1, $attori2, $attori3]),
 
     ];
 } catch (Exception $e) {
