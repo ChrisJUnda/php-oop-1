@@ -11,16 +11,16 @@ class Movie
     private int $anno;
     private string $lingua;
 
-    public function __construct(string $dato1, string $dato2, int $dato3, string $dato4)
+    public function __construct(string $titolo, string $genere, int $anno, string $lingua)
     {
-        $this->titolo = $dato1;
-        $this->genere = $dato2;
-        $this->anno = $dato3;
-        $this->lingua = $dato4;
+        $this->titolo = $titolo;
+        $this->genere = $genere;
+        $this->anno = $anno;
+        $this->lingua = $lingua;
     }
     public function getFilm()
     {
-        return "<p>" . "$this->titolo" . "</p>" . "<p>" . "$this->genere" . "</p>" . "<p>" . "$this->anno" . "</p>" . "<p>" . "$this->lingua" . "</p>";
+        return "Titolo: {$this->titolo}, Genere: {$this->genere}, Anno di uscita: {$this->anno}, Lingua originale: {$this->lingua}";
     }
 }
 
