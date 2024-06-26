@@ -57,10 +57,29 @@ class Movie
         }
         $this->generes = $generes;
     }
+
+    //function Aggiungi genere (ADD)
+
+    public function addGenere(string $genere)
+    {
+        if (!is_string($genere) || empty($genere)) {
+            throw new InvalidArgumentException("Il genere deve essere una stringa non vuota.");
+        }
+        $this->generes[] = $genere;
+    }
+
+
     //function attori
     public function setAttoris(array $attoris)
     {
         $this->attoris = $attoris;
+    }
+
+
+    //function Aggiungi attori (ADD)
+    public function addAttori(Attori $attori): void
+    {
+        $this->attoris[] = $attori;
     }
 
 
@@ -96,6 +115,9 @@ try {
         new Movie("Avengers End Game", ["Azione", "Fanstascienza"], 2019, "inglese", [$attori1, $attori2, $attori3]),
 
     ];
+
+    $movies[0]->addGenere("avventura");
+    $movies[0]->addAttori(new Attori("Mark", "Bufalo"));
 } catch (Exception $e) {
     echo "Eccezione: " . $e->getMessage();
 }
@@ -137,7 +159,7 @@ try {
             <ul>
                 <?php foreach ($movies as $movie) : ?>
                     <li>
-                        <?php echo $movie->getFilm() ?>
+                        <?php echo $movie?->getFilm() ?? 'Informazione dei film non disponibili'; ?>
                     </li>
                 <?php endforeach; ?>
             </ul>
