@@ -34,6 +34,9 @@ class Movie
     private string $lingua;
     private array $attoris;
 
+    //variabile statica
+    public static int $movieCount = 0;
+
     //FUNZIONE COSTRUCT MOVIE
     public function __construct(string $titolo, array $generes, int $anno, string $lingua, array $attoris = [])
     {
@@ -42,7 +45,14 @@ class Movie
         $this->anno = $anno;
         $this->lingua = $lingua;
         $this->attoris = $attoris;
+        self::$movieCount++;
     }
+
+    public static function getMovieCount(): int
+    {
+        return self::$movieCount;
+    }
+
 
     // GENERI CON ECCEZIONI
     public function setGeneres(array $generes)
@@ -165,6 +175,11 @@ try {
             </ul>
         </div>
     </main>
+    <footer>
+        <p>
+            Totali film usciti (per ora) : <?= Movie::getMovieCount(); ?>
+        </p>
+    </footer>
     <!-- MAIN -->
 
 
